@@ -1,0 +1,83 @@
+.goal {
+    border: 1px solid rgba(29, 1, 95, 0.1);
+    background: #FFFFFF;
+    padding: 1rem;
+    animation: transitionIn 1s ease;
+}
+.title-goal i {
+    font-size: 1.2rem;
+}
+.progress {
+    width: 70vh;
+}
+.description-goal {
+    font-size: 1rem;
+    margin: 0.5rem;
+}
+.progress {
+    margin: 0.5rem;
+}
+.progress-bar {
+    background-color: var(--purple-color);
+}
+.goal-checklist{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    animation: transitionIn 0.8s ease-in-out;
+}
+.no-display{
+    display: none;
+}
+.progress-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.goal-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.update-button{
+    height: 30%;
+    margin: 1%;
+}
+.save-changes-btn {
+    background: #1A0057;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: 1rem;
+    height: 2.3rem;
+    margin-bottom: 0.5rem;
+}
+input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+input[type="checkbox"]:checked {
+    background-color: var(--purple-color);
+}
+.form-check-label {
+    font-size: 1rem;
+}
+.bi-pencil-fill {
+    color: rgba(29, 1, 95, 1);
+    font-size: 1.3rem;
+    transform: translateY(3rem);
+}
+.form-check {
+    margin: 1rem;
+    display: flex;
+    gap: 0.7rem;
+}
+.add-task-input {
+    border: none;
+    border-bottom: 1px solid black;
+    margin-left: 1rem;
+}
+.add-task-btn {
+    color: rgba(13, 110, 253, 1);
+    background-color: transparent;
+    border: none;
+}

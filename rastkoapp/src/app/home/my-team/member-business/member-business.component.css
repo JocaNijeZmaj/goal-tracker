@@ -1,0 +1,17 @@
+:host ::ng-deep #completed-goals .goal-list .progress {
+    display: none;
+}
+i {
+    font-size: 1.4rem;
+}
+.ag-label {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+.cg-label {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+.goal-list {
+    animation: transitionIn 1s ease;
+}

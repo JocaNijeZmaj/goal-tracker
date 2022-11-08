@@ -1,0 +1,73 @@
+<div  *ngIf="!isSentSuccessfully" [ngClass]="{ 'add-goal-open' : AddGoalDisplay }" class="add-goal">
+    <div class="open-exit-btn">
+        <button *ngIf="AddGoalDisplay == false || !AddGoalDisplay " (click)="openAddGoal()" class="open-add-goal-btn">
+            {{goalType === 'BUSINESS' ? 'Zahtev za novi cilj' : 'Kreiraj novi cilj' }}
+        </button>
+        <i *ngIf="AddGoalDisplay == true" (click)="openAddGoal()" class="bi bi-x-lg"></i>
+    </div>
+    <form #goal='ngForm' *ngIf="AddGoalDisplay" (ngSubmit)="createGoal(goal)">
+        <div class="input-group mb-3 d-flex flex-column gap-2 w-75">
+            <input type="text" placeholder="Unesi naziv cilja *"
+            id="title"
+            ngModel
+            name="title"
+            #title="ngModel"
+            required
+            minlength="3"
+            [class.border-danger]= "!title.valid && title.touched">
+        </div>
+        <div class="task-list d-flex flex-column w-75">
+            <div class="input-task input-group mb-3 d-flex align-items-start flex-column gap-2">
+                <div class="input-task input-group d-flex align-items-start flex-row gap-2">
+                <input (input)="onInputChange($event)"
+                class="w-75" type="text"
+                placeholder="Unesi task"
+                id="task"
+                [(ngModel)]="newTaskName"
+                name="task"
+                #task="ngModel"
+                minlength="3"
+                >
+                <button type="button" class="add-task-btn" [disabled]="!task.value"
+                (click)="addTask()">Dodaj task <i class="bi bi-plus-circle"></i></button>
+                </div>
+                <div *ngFor="let task of tasks; let i = index;">
+                    <i (click)="deleteTask(i)" class="bi bi-dash-circle text-danger mx-3"></i>
+                    {{task.name}}
+                </div>
+            </div>
+        </div>
+        <div class="input-group mb-3 d-flex flex-column gap-2 w-75">
+            <input type="text" placeholder="Ostavi komentar *"
+            id="description"
+            ngModel
+            name="description"
+            #description="ngModel"
+            required
+            minlength="3"
+            [class.border-danger]= "!description.valid && description.touched">
+        </div>
+        <div class="input-date">
+            <label for="goal-date">Vreme realizacije: </label>
+            <input type="date" id="goal-date"
+            id="date"
+            ngModel
+            name="date"
+            #date="ngModel"
+            required
+            [min]="todayDate"
+            [class.border-danger]= "!date.valid && date.touched">
+        </div>
+        <div class="open-exit-btn">
+            <button class="add-goal-btn" type="submit"
+            [disabled]="!goal.valid || !validTasks"
+            [ngClass]="goal.valid && validTasks ? 'validButton' : 'invalidButton' "
+            >{{goalType === 'BUSINESS' ? 'Pošalji zahtev' : 'Kreiraj cilj' }}</button>
+        </div>
+    </form>
+</div>
+<div *ngIf="isSentSuccessfully" class="send-goal-model">
+    <h4 *ngIf="currentUser.manager">{{goalType === 'BUSINESS' ? "Vaš zahtev je poslat"  : 'Uspešno kreiran novi cilj'}}</h4>
+    <h4 *ngIf="!currentUser.manager">Uspešno kreiran novi cilj</h4>
+    <h1 class="bi bi-check-circle text-success" (click)="isSentSuccessfully = false"></h1>
+</div>

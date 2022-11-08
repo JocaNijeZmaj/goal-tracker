@@ -1,0 +1,26 @@
+<div class="admin my-container">
+    <div>
+        <nav id="navbar row">
+            <div class="navbar-container">
+                <input class="in_cb" type="checkbox" (click)="toggleNav()" name="" id="">
+                <div class="hamburger-lines">
+                    <span class="line line1"></span>
+                    <span class="line line2"></span>
+                    <span class="line line3"></span>
+                </div>
+                <img class="logo" src="./assets/images/logo.png" width="200px" alt="Logo Img">
+            </div>
+        </nav>
+    </div>
+    
+    
+    <div class="main" >
+        <ul class="menu-items" [ngClass]="{show: navbarOpen === true, hide: navbarOpen === false}">
+            <li><a routerLink="/admin/new-user" routerLinkActive="active" ariaCurrentWhenActive="page">Kreiraj profil korisnika</a></li>
+        </ul>
+        <div class="sidebar">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+

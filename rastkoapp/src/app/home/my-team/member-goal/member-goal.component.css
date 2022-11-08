@@ -1,0 +1,179 @@
+.goal {
+    border: 1px solid rgba(29, 1, 95, 0.1);
+    background: #FFFFFF;
+    padding: 1rem;
+    animation: transitionIn 1s ease;
+}
+.title-goal i {
+    font-size: 1.2rem;
+}
+.progress {
+    width: 70vh;
+}
+.description-goal {
+    font-size: 1rem;
+}
+.progress {
+    margin: 0.5rem;
+}
+.progress-bar {
+    background-color: var(--purple-color);
+}
+.goal-checklist{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    animation: transitionIn 0.8s ease-in-out;
+}
+.no-display{
+    display: none;
+}
+.progress-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.goal-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.update-button{
+    height: 30%;
+    margin: 1%;
+}
+.save-changes-btn {
+    background: #1A0057;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: 1rem;
+    height: 2.3rem;
+    margin-bottom: 0.5rem;
+}
+input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+input[type="checkbox"]:checked {
+    background-color: var(--purple-color);
+}
+.form-check-label {
+    font-size: 1rem;
+}
+.bi-pencil-fill {
+    color: rgba(29, 1, 95, 1);
+    font-size: 1.3rem;
+    transform: translateY(3rem);
+}
+.form-check {
+    margin: 1rem;
+    display: flex;
+    gap: 0.7rem;
+}
+.grade-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 1px 1px 1px 1px rgba(26, 0, 87, 0.31);
+    padding: 2rem;
+    animation: transitionInDeg 0.7s ease;
+}
+.grade-btn {
+    background: #1A0057;
+    border-radius: 4px;
+    padding: 0 1rem;
+    color: #FFFFFF;
+    
+}
+.grade-select {
+    display: flex;
+    gap: 1rem;
+}
+.btn-grade-pick {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+.btn-grade-pick.active {
+    background: #FFFFFF;
+    border: 1px solid rgba(40, 0, 134, 0.54);
+    box-shadow: 1px 1px 1px 1px rgba(29, 1, 95, 0.1);
+    border-radius: 10px;
+    padding: 0 1.3rem 0 0;
+}
+.btn-grade-pick i {
+    font-size: 2rem;
+}
+.btn-grade-pick label {
+    font-size: 1.2rem;
+}
+.bi-emoji-neutral {
+    color: #1A0057;
+}
+.bi-emoji-smile {
+    color: #9662EB;
+}
+.bi-emoji-sunglasses{
+    color: #C944F8;
+}
+.btn-grade-pick input {
+    opacity: 0;
+}
+#comment-grade {
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    border-radius: 10px;
+}
+.exit-btn {
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    width: 100%;
+    margin-bottom: -1.5rem;
+}
+.comment {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.save-grade {
+    text-align: center;
+    color: #FFFFFF;
+    background: #1A0057;
+    border-radius: 5px;
+    padding: 0 1rem;
+}
+.grade-container {
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+.grade-container i {
+    font-size: 2rem !important;
+}
+.grade-container p {
+    margin: 0;
+}
+.final-grade div {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1.1rem;
+    text-align: center;
+}
+.final-comment {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1.1rem;
+    text-align: center;
+}

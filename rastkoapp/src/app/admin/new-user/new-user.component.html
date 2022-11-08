@@ -1,0 +1,73 @@
+<form *ngIf="!isAddedSuccessfully" class="main-form" #f="ngForm" (ngSubmit)="onCreateNewUser(f)">
+    <div>
+        
+        <div>
+            <h4 class="title">Kreiraj novog korisnika</h4>
+
+            <div class="d-flex flex-column gap-3">
+                <div class="d-flex flex-column gap-2 col-xs-6 col-md-4 col-lg-3">
+                    <label class="form-label" for="email" >E-mail novog korisnika</label>
+                    <span *ngIf="!email.valid && email.touched" class="alert alert-danger" role="alert">Email nije validan</span>
+                    <input type="email"
+                    id="email"
+                    placeholder="Email@sbgenomics.com"
+                    ngModel
+                    name="email"
+                    required
+                    #email="ngModel"
+                    class="form-control"
+                    pattern="^[A-Za-z0-9._%+-]+@sbgenomics\.com$"
+                    >
+                </div>
+
+                <div class="form-check">
+                    <label for="member" class="form-check-label">Član tima</label>
+                    <input class="form-check-input" type="checkbox"
+                    id="member"
+                    ngModel
+                    name="member"
+                    #member="ngModel"
+                    [checked]="isMember"
+                    (change)="onCheckedMember()">
+                </div>
+                <div>
+                    <p class="selected-manager border border-secondary rounded col-xs-12 col-md-4 col-lg-5" *ngIf="selectedManager">Izabran nadređeni:  {{selectedManager.email}} <button class="btn btn-secondary" (click)="changeUserAdded()">Promeni</button></p>
+                    <div class="isMember d-flex flex-column card col-xs-12 col-md-4 col-lg-5 px-5 py-3" *ngIf="isMember && !selectedManager">
+                        <label for="manager" class="form-label">Unesi E-mail njegovog nadređenog</label>
+                        <input class="form-control" type="email"
+                        id="manager"
+                        [(ngModel)]="searchedText"
+                        name="manager"
+                        #manager="ngModel"
+                        
+                        min="0" 
+                        max="60" 
+                        minlength="1"            
+                        placeholder="pretraži"
+                        >
+                        <div *ngIf="member.touched" class="users overflow-auto">
+                        <ul class="list-group " *ngFor = "let user of users" >
+                            <li class="list-group-item rounded-0" *ngIf="searchedText === '' || user.email.toLowerCase().includes(searchedText)"
+                            (click)="onSelectedManager(user)">
+                            {{user.email}}
+                            </li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-success my-3" [disabled]="!f.valid || !selectRequired" type="submit" 
+            [ngClass]="f.valid && selectRequired ? 'validButton' : 'invalidButton' ">
+                Završi
+            </button>
+        </div> 
+    </div>
+
+    
+</form>
+
+<div class="userAdded" *ngIf="isAddedSuccessfully">
+    <h2>Uspešno ste dodali zaposlenog</h2>
+    <button (click)="toggleIsAdded()">Dodaj još</button>
+</div>

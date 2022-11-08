@@ -1,0 +1,24 @@
+<div class="home" >
+    <div *ngIf="selectedMember" class="profile">
+        <div class="prof-picture-shadow"><img class="prof-picture" [src]="selectedMember.pictureUrl ? selectedMember.pictureUrl : 'https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg'"></div>
+        <h5 class="name">{{ selectedMember.firstName}} {{selectedMember.lastName}}</h5>
+        <p class="role">Software developer</p>
+        <label for="email">E-mail: </label>
+        <p id="email">{{selectedMember.email}}</p>
+        <label for="manager">Menadžer:</label>
+        <p id="manager">{{selectedMember.manager ? selectedMember.manager.email : "/"}}</p>
+        <label for="">U firmi od:</label>
+        <p id="date">{{ selectedMember.creationDate }}</p>
+        
+    </div>
+    <div class="main">
+        <nav class="nav-home">
+            <a [routerLink]="['/my-team',memberEmail,'status']" routerLinkActive="active" ariaCurrentWhenActive="page" class="status">Status</a>
+            <a [routerLink]="['/my-team',memberEmail,'business']" routerLinkActive="active" ariaCurrentWhenActive="page" class="business">Poslovni ciljevi</a>
+            <a [routerLink]="['/my-team',memberEmail,'personal']" routerLinkActive="active" ariaCurrentWhenActive="page" class="personal">Razvojni ciljevi</a>
+        </nav>
+        <div class="content" [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''">
+                <router-outlet #o="outlet"></router-outlet>
+        </div>
+    </div>
+</div>

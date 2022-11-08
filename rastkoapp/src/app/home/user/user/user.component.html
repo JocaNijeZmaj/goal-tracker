@@ -1,0 +1,33 @@
+<div class="home">
+    <div class="profile">
+        <div class="prof-picture-shadow"><img class="prof-picture" [src]="user.picture"></div>
+        <h5 class="name">{{user.firstName + ' ' + user.lastName}}</h5>
+        <form #info='ngForm' class="role-container">
+
+            <p id="role" (click)="updatePosition = true" *ngIf="!updatePosition">{{ user.position }} <i class="bi bi-pencil-fill"></i></p>
+            <input type="text" id="role-edit" *ngIf="updatePosition"
+            [value]="user.position"
+            name="role-edit"
+            [(ngModel)]="user.position"
+            >
+            <button (click)="updateUserInfo()" *ngIf="updatePosition">Sačuvaj</button>
+        </form>
+        <label for="email">E-mail: </label>
+        <p id="email">{{user.email}}</p>
+        <label for="manager">Menadžer:</label>
+        <p id="manager">{{user.manager ? user.manager.email : ""}}</p>
+
+    </div>
+    <div class="main">
+        <nav class="nav-home">
+            <a [routerLink]="['/user/status']" routerLinkActive="active" ariaCurrentWhenActive="page" class="status">Status</a>
+            <a [routerLink]="['/user/business-goals']" routerLinkActive="active" ariaCurrentWhenActive="page" class="business">Poslovni ciljevi</a>
+            <a [routerLink]="['/user/personal-goals']" routerLinkActive="active" ariaCurrentWhenActive="page" class="personal">Razvojni ciljevi</a>
+            <a [routerLink]="['/user/one-on-one']" routerLinkActive="active" ariaCurrentWhenActive="page" class="one-on-one">1 : 1 sastanak</a>
+            <a *ngIf="user.role ==='MANAGER'" [routerLink]="['/user/approvals']"  routerLinkActive="active" ariaCurrentWhenActive="page" class="notifications">Zahtevi</a>
+        </nav>
+        <div class="content" [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''">
+            <router-outlet #o="outlet"></router-outlet>
+        </div>
+    </div>
+</div>

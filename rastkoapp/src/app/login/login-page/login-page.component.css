@@ -1,0 +1,54 @@
+.container {
+    max-width: 1167px;
+    max-height: 735px;
+    margin: auto;
+    position: absolute;
+    padding: 0;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #FFFFFF;
+    box-shadow: 7px 7px 50px 10px #A28DF0;
+}
+.rastko-logo {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(180deg, #A280ED 0%, #9CE0FE 92.38%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+.login p {
+    font-weight: 700;
+    font-size: 35px;
+}
+@media only screen and (max-width: 700px) {
+    .container {
+        flex-direction: column;
+        height: 100vh;
+    }
+    .login {
+        height: 50%;
+        width: 50%;
+    }
+    .rastko-logo svg{
+        width: 100px;
+        height: 100px;
+    }
+    .login {
+        gap: 1rem;
+    }
+    
+}

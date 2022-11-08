@@ -1,0 +1,8 @@
+
+<div *ngFor="let goal of this.requestedGoals" class="goal-container">
+    <h5> <strong>{{goal.employee_email}} </strong> želi da doda sebi <strong>poslovni cilj.</strong></h5>
+    <app-approval-goal [goal]="goal"></app-approval-goal>
+</div>
+
+<app-approval-modal *ngIf="showPopup" [canceledGoal]="canceledGoal"
+(closePopUp)="showPopup = !$event" ></app-approval-modal>

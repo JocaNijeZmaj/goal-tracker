@@ -1,0 +1,20 @@
+.title-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    height: 100%;
+    background: -webkit-linear-gradient(196.07deg, #A282EF 11.18%, #9DE0FF 46.43%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+    letter-spacing: 0.38px;
+    margin-top: 15%;
+    
+}
+@media only screen and (max-width: 700px) {
+    .title-home {
+        font-size: 2rem;
+    }
+  }

@@ -1,0 +1,15 @@
+<div class="modal" tabindex="-1" role="dialog" id="popup">
+    <div lass="modal-dialog" role="document">
+        <div class="modal-content">
+            <i class="bi bi-x-lg" (click)="closeModal()"></i>
+
+            <h3>Da li ste sigurni da želite da odbacite poslovni cilj od </h3>
+            <h3>{{canceledGoal.employee_email}} ?</h3>
+
+            <div class="button-container">
+                <button type="button" class="btn btn-outline-secondary" (click)="closeModal()">Ne</button>
+                <button type="button" class="btn btn-outline-secondary" (click)="declineGoal()">Da</button>
+            </div>
+        </div>
+    </div>
+</div>

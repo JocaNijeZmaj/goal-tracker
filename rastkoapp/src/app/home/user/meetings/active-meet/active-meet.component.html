@@ -1,0 +1,70 @@
+<div class="meeting-container">
+    <form #editMeet=""ngForm class="meeting">
+        <div class="meet-info">
+            <input class="title-meet-input" *ngIf="editingTitle" type="text" [(ngModel)]="activeMeet.title" id="meetTitle" name="meetTitle">
+            <h4 (click)="showEditOptions === true ? editingTitle = true : editingTitle = false" *ngIf="!editingTitle" class="title-meet b">
+                {{ fullName + "-"+ activeMeet.title }}
+                <i class="bi bi-pencil-fill mx-4"
+                  *ngIf="currentUser.role==='MANAGER' && !showEditOptions" (click)="showEditOptions = true"></i></h4>
+            <i class="bi bi-clock-history" >
+                {{ activeMeet.date | date:'MMM d, y' }} {{activeMeet.time | shorttime}}
+            </i>
+        </div>
+
+        <a href="#" *ngIf="!editingTitle" >{{ activeMeet.link }}</a>
+        <input class="title-meet-input col-6" *ngIf="editingTitle" type="text" [(ngModel)]="activeMeet.link" id="meetLink" name="meetLink" >
+
+        <div class="topics-list">
+            <label for="topics" class="b"> Teme za sastanak:</label>
+            <i class="bi bi-chevron-up mx-2" (click)="toggleShowTopics()" *ngIf="showTopics === false"></i>
+            <i class="bi bi-chevron-down mx-2" (click)="toggleShowTopics()" *ngIf="showTopics === true"></i>
+            <ul id="topics" class="my-2" *ngFor="let topic of activeMeet?.topics; let i = index;">
+                <li *ngIf="showTopics === true"><i class="bi bi-pin-angle-fill mx-3" *ngIf="!deletingTopics"></i>
+                <i *ngIf="deletingTopics" (click)="deleteTopic(i)" class="bi bi-dash-circle mx-3">
+                </i>{{ topic.topicTitle }}</li>
+            </ul>
+            <form class="addTopicsForm" #topics="ngForm" *ngIf="addingTopics">
+                <i class="bi bi-pin-angle-fill mx-3"></i>
+                <input type="text" name="newTopic" id="newTopic" required minlength="3" [(ngModel)]="newTopic">
+                <i class="bi bi-plus-circle mx-2" [ngClass]="{disablePlus: !topics.valid}" (click)="addTopic()"></i>
+            </form>
+            <div class="meet-options">
+                <div class="add-and-delete-topic" *ngIf="showTopics === true">
+                    <div class="add-topic" (click)="addingTopics = !addingTopics" [ngClass]="{disable: deletingTopics}">
+                        <i class="bi bi-plus-lg"></i>
+                        <i class="bi bi-pin-angle mx-2"></i>
+                    </div>
+                    <div class="delete-topic" (click)="deletingTopics = !deletingTopics" [ngClass]="{disable: addingTopics}">
+                        <i class="bi bi-trash"></i>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="showEditOptions === true" class="delete-and-save">
+                <div>
+                    <div class="delete-meeting" (click)="deleteMeet()">
+                        <i class="bi bi-trash"></i>
+                        <span>Obriši sastanak</span>
+                    </div>
+                    <div>
+                        <button class="save-button" (click)="saveEditedChanges()" type="button">Sačuvaj promene</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+
+            <div *ngIf="showNoteContainer" class="note-main">
+                <Label for="note">Moje beleške </Label>
+                <div class="x-container"><i class="bi bi-x" (click)="OpenNote()"></i></div>
+                <textarea name="note" id="note" cols="100" rows="20"  [(ngModel)]="noteText" ></textarea>
+                <div class="btn-container">
+                    <button (click)="saveNote()">Sačuvaj belešku</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="notes-container" (click)="OpenNote()" *ngIf="!showNoteContainer">
+        <i class="bi bi-file-earmark-plus"></i>
+        <span>Beleška</span>
+    </div>
+</div>

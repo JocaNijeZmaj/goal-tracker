@@ -1,0 +1,42 @@
+<div class="main">
+    <app-member-add-goal  [goalType]="goalType" [member]="selectedMember"></app-member-add-goal>
+
+    <div id="pending-goals">
+        <label class="cg-label" for="pending-goals">
+            Ciljevi na čekanju
+            <i class="bi bi-chevron-up" (click)="togglePendingGoals(false)" *ngIf="showPendingGoals"></i>
+            <i class="bi bi-chevron-down" (click)="togglePendingGoals(true)" *ngIf="!showPendingGoals"></i>
+        </label>
+        <div class="my-3 goal-list" *ngIf="showPendingGoals">
+            <app-member-goal *ngFor="let pendingGoal of pendingGoals"
+            [goal]="pendingGoal" [goalStatus]="'PENDING'" [goalType]="'BUSSINES'"></app-member-goal>
+        </div>
+        
+    </div>
+
+    <div id="active-goals">
+        <label class="ag-label" for="active-goals">
+            Aktivni ciljevi     
+            <i class="bi bi-chevron-up" (click)="toggleActiveGoals(false)" *ngIf="showActiveGoals"></i>
+            <i class="bi bi-chevron-down" (click)="toggleActiveGoals(true)" *ngIf="!showActiveGoals"></i>
+        </label>
+
+        <div class="my-3 goal-list" *ngIf="showActiveGoals">
+            <app-member-goal *ngFor="let activeGoal of activeGoals" 
+            [goal]="activeGoal" [goalStatus]="'ACTIVE'" [goalType]="'BUSSINES'" ></app-member-goal>
+        </div>
+    </div>
+    
+    <div id="completed-goals">
+        <label class="cg-label" for="completed-goals">
+            Ispunjeni ciljevi
+            <i class="bi bi-chevron-up" (click)="toggleComplitedGoals(false)" *ngIf="showComplitedGoals"></i>
+            <i class="bi bi-chevron-down" (click)="toggleComplitedGoals(true)" *ngIf="!showComplitedGoals"></i>
+        </label>
+        <div class="my-3 goal-list" *ngIf="showComplitedGoals">
+            <app-member-goal *ngFor="let complitedGoal of complitedGoals" 
+            [goal]="complitedGoal" [goalStatus]="'COMPLETED'" [goalType]="'BUSSINES'"></app-member-goal>
+        </div>
+    </div>
+
+</div>

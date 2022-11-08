@@ -1,0 +1,26 @@
+
+<div class="active-goals1">
+    <label class="ag-label" for="active-goals">
+        Poslovni ciljevi     
+        <i class="bi bi-chevron-up" (click)="toggleBusinessGoals(false)" *ngIf="showBusinessGoals"></i>
+        <i class="bi bi-chevron-down" (click)="toggleBusinessGoals(true)" *ngIf="!showBusinessGoals"></i>
+    </label>
+
+    <div class="my-3 goal-list" *ngIf="showBusinessGoals">
+        <app-member-goal *ngFor="let businessGoal of businessGoals" 
+        [goal]="businessGoal" [goalStatus]="'ACTIVE'" [goalType]="'BUSSINES'" ></app-member-goal>
+    </div>
+</div>
+
+<div class="active-goals">
+    <label class="ag-label" for="active-goals">
+        Aktivni ciljevi     
+        <i class="bi bi-chevron-up" (click)="togglePersonalGoals(false)" *ngIf="showPersonalGoals"></i>
+        <i class="bi bi-chevron-down" (click)="togglePersonalGoals(true)" *ngIf="!showPersonalGoals"></i>
+    </label>
+
+    <div class="my-3 goal-list" *ngIf="showPersonalGoals">
+        <app-member-goal *ngFor="let personalGoal of personalGoals" 
+        [goal]="personalGoal" [goalStatus]="'ACTIVE'"></app-member-goal>
+    </div>
+</div>

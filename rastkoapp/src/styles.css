@@ -1,0 +1,39 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap');
+/* @font-face {
+    font-family: "nunito-sans";
+    src: local("nunito-sans.regular"), url(./assets/fonts/nunito-sans.regular.ttf) format("truetype");
+    
+} */
+* {
+  font-family: 'Nunito Sans', sans-serif;
+}
+:root {
+    --purple-color: #A282EE;
+    --blue-color: #9DE0FF;
+    --hard-blue: #1A0057;
+}
+body, html {
+  padding: 0;
+  margin: 0;
+  background: #F0F0F0;
+}
+@keyframes transitionInDeg {
+    from {
+  opacity: 0;
+  transform: rotate(-10deg);
+    }
+    to {
+  opacity: 1;
+  transform: rotate(0);
+    }
+  }
+  @keyframes transitionIn {
+    from {
+  opacity: 0;
+    }
+    to {
+  opacity: 1;
+    }
+  }

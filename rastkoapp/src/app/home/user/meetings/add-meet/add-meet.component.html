@@ -1,0 +1,92 @@
+<div  *ngIf="!isSentSuccessfully" [ngClass]="{ 'add-goal-open' : AddMeetDisplay }" class="add-goal">
+    <div class="open-exit-btn">
+        <button *ngIf="AddMeetDisplay === false || !AddMeetDisplay " (click)="openAddMeet()" class="open-add-goal-btn">Dodaj sastanak</button>
+        <i *ngIf="AddMeetDisplay === true" (click)="openAddMeet()" class="bi bi-x-lg"></i>
+    </div>
+    <form #meet='ngForm' *ngIf="AddMeetDisplay" (ngSubmit)="createMeet(meet)">
+        <div class="input-group mb-3 d-flex flex-column gap-2 w-75">
+            <input type="text" placeholder="Unesi email člana tima *"
+            id="member"
+            ngModel
+            name="member"
+            #member="ngModel"
+            required
+            minlength="3"
+            [class.border-danger]= "!member.valid && member.touched">
+        </div>
+        <div class="input-group mb-3 d-flex flex-column gap-2 w-75">
+            <input type="text" placeholder="Unesi naziv sastanka *"
+            id="meetName"
+            ngModel
+            name="meetName"
+            #meetName="ngModel"
+            required
+            minlength="3"
+            [class.border-danger]= "!meetName.valid && meetName.touched">
+        </div>
+        <div class="input-group mb-3 d-flex flex-column gap-2 w-75">
+            <input type="text" placeholder="Unesi link *"
+            id="link"
+            ngModel
+            name="link"
+            #link="ngModel"
+            required
+            minlength="3"
+            [class.border-danger]= "!link.valid && link.touched">
+        </div>
+        <div class="task-list d-flex flex-column w-75">
+            <div class="input-task input-group mb-3 d-flex align-items-start flex-column gap-2">
+                <div class="input-task input-group d-flex align-items-start flex-row gap-2">
+                <input (input)="onInputChange($event)"
+                class="w-75" type="text"
+                placeholder="Unesi temu"
+                id="theme"
+                [(ngModel)]="newThemeName"
+                name="theme"
+                #theme="ngModel"
+                minlength="3"
+                >
+                <button type="button" class="add-task-btn" [disabled]="!theme.value"
+                (click)="addTheme()">Dodaj temu <i class="bi bi-plus-circle"></i></button>
+                </div>
+                <div *ngFor="let theme of themes; let i = index;">
+                    <i (click)="deleteTask(i)" class="bi bi-dash-circle text-danger mx-3"></i>
+                    {{theme}}
+                </div>
+            </div>
+        </div>
+        <div class="date-conatiner">
+            <div class="input-date">
+                <label for="date">Datum sastanka: </label>
+                <input type="date" id="date"
+                ngModel
+                name="date"
+                #date="ngModel"
+                required
+                [min]="todayDate"
+                [class.border-danger]= "!date.valid && date.touched">
+            </div>
+            <div class="input-time">
+                <label for="date">Vreme sastanka: </label>
+                <input type="time" id="time" class="mx-2"
+                ngModel
+                name="time"
+                #time="ngModel"
+                min="09:00" max="18:00"
+                required
+                [class.border-danger]= "!time.valid && time.touched">
+            </div>
+        </div>
+        <div class="open-exit-btn">
+            <button class="add-goal-btn" type="submit"
+            [disabled]="!meet.valid || !validThemes"
+            [ngClass]="meet.valid && validThemes ? 'validButton' : 'invalidButton' "
+            >Kreiraj sastanak</button>
+        </div>
+
+    </form>
+</div>
+<div *ngIf="isSentSuccessfully" class="send-goal-model">
+    <h4 >Uspešno kreiran novi sastanak</h4>
+    <h1 class="bi bi-check-circle text-success" (click)="isSentSuccessfully = false"></h1>
+</div>

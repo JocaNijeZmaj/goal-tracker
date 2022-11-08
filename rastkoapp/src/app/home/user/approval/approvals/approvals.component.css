@@ -1,0 +1,53 @@
+.goal-container{
+    margin: 1rem;
+}
+.done{
+    color: purple;
+    font-size: 1.2rem;
+}
+.goal {
+    border: 1px solid rgba(29, 1, 95, 0.1);
+    background: #FFFFFF;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+.title-goal i {
+    font-size: 1.2rem;
+}
+.goal-task-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.description-goal {
+    font-size: 1rem;
+}
+.goal-checklist{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    animation: transitionIn 0.8s ease-in-out;
+}
+.no-display{
+    display: none;
+}
+.goal-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.update-button{
+    height: 30%;
+    margin: 1%;
+}
+strong {
+    font-weight: 800;
+}
+.form-check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-check i {
+    margin-right: 0.5rem;
+    font-weight: 600;
+}
